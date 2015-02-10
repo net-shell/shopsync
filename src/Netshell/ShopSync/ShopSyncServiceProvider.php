@@ -8,12 +8,9 @@ class ShopSyncServiceProvider extends ServiceProvider {
 	{
 		//
 	}
-	public function register()
-	{
-		/*$this->app->bind(
-			'Illuminate\Contracts\Auth\Registrar',
-			'App\Services\Registrar'
-		);*/
-	}
 
+	public function register(ProductManager $productManager)
+	{
+		$this->app->bind('SyncProduct', 'Netshell\ShopSync\ProductManager');
+	}
 }
