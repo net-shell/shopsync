@@ -2,10 +2,10 @@
 
 use Netshell\ShopSync\Contracts\Driver;
 
-class Microweber extends AbstractDriver implements Driver {
+class Ebay extends AbstractDriver implements Driver {
 
 	public function sync() {
-		return 'custom module api endpoint calls';
+		return 'much api calls. very wow.';
 	}
 
 }

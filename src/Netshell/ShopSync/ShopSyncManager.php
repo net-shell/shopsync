@@ -2,11 +2,12 @@
 
 use Netshell\ShopSync\Contracts\Driver;
 use Illuminate\Support\Manager;
+use Exception;
 
 class ShopSyncManager extends Manager {
 
 	public function getDefaultDriver() {
-		throw new InvalidArgumentException('No ShopSync driver was specified.');
+		throw new Exception('No ShopSync driver was specified.');
 	}
 
 	protected function createMicroweberDriver()
@@ -22,6 +23,9 @@ class ShopSyncManager extends Manager {
 	public function buildDriver($driver, $config)
 	{
 		$config = $this->app['config']['services.'.$config];
+		if(is_null($config)) {
+			throw new Exception('No service configuration found for driver '.$driver);
+		}
 		return new $driver($config);
 	}
 

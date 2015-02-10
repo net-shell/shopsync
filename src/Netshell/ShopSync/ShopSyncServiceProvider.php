@@ -10,6 +10,8 @@ class ShopSyncServiceProvider extends ServiceProvider {
 
 	public function register()
 	{
-		$this->app->singleton('shopsync', 'Netshell\ShopSync\ShopSyncManager');
+		$this->app->singleton('shopsync', function() {
+			return new ShopSyncManager($this->app);
+		});
 	}
 }
