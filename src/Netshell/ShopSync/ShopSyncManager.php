@@ -3,13 +3,7 @@
 use Netshell\ShopSync\Contracts\Driver;
 use Illuminate\Support\Manager;
 
-class ProductManager extends Manager {
-
-	public function __construct($app)
-	{
-		parent::__construct($app);
-
-	}
+class ShopSyncManager extends Manager {
 
 	public function getDefaultDriver() {
 		throw new InvalidArgumentException('No ShopSync driver was specified.');
@@ -19,7 +13,7 @@ class ProductManager extends Manager {
 	{
 		return $this->buildDriver('Netshell\ShopSync\Drivers\Microweber', 'microweber');
 	}
-	
+
 	protected function createEbayDriver()
 	{
 		return $this->buildDriver('Netshell\ShopSync\Drivers\Ebay', 'ebay');

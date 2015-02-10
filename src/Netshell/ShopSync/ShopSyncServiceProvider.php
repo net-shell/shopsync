@@ -6,11 +6,10 @@ class ShopSyncServiceProvider extends ServiceProvider {
 
 	public function boot()
 	{
-		//
 	}
 
-	public function register(ProductManager $productManager)
+	public function register()
 	{
-		$this->app->bind('SyncProduct', 'Netshell\ShopSync\ProductManager');
+		$this->app->singleton('shopsync', 'Netshell\ShopSync\ShopSyncManager');
 	}
 }

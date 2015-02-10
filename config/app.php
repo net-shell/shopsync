@@ -136,6 +136,7 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 
+		'Netshell\ShopSync\ShopSyncServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */
@@ -193,6 +194,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
+		'ShopSync'  => 'Netshell\ShopSync\Facades\ShopSync',
 	],
 
 ];
