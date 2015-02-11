@@ -1,11 +1,8 @@
 <?php namespace Netshell\ShopSync\Models;
 
-class MicroweberProduct extends Model {
+class Syncable extends Model {
 
-	protected $table = 'products_microweber';
-
-	function product()
-	{
+	public function product() {
 		return $this->belongsTo('Netshell\ShopSync\Models\Product');
 	}
 

@@ -1,4 +1,4 @@
-<?php namespace Netshell\ShopSync;
+<?php namespace Netshell\ShopSync\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 

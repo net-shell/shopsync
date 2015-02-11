@@ -11,7 +11,7 @@ class HomeController extends Controller {
 
 	public function index(ShopSync $shopsync)
 	{
-		dd($shopsync::driver('ebay')->sync());
+		dd($shopsync::driver('ebay'));
 		return view('home');
 	}
 

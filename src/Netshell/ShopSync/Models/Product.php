@@ -1,10 +1,23 @@
-<?php namespace Netshell\ShopSync;
+<?php namespace Netshell\ShopSync\Models;
 
 class Product extends Model {
 
-	function products($driverModel)
-	{
-		return $this->morphedByMany($driverModel, 'syncable');
+	public $timestamps = false;
+
+	public function ebays() {
+		return $this->hasMany('Netshell\ShopSync\Models\EbayProduct');
 	}
+
+	public function microwebers() {
+		return $this->hasMany('Netshell\ShopSync\Models\MicroweberProduct');
+	}
+
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
+
+    function getNameAttribute() {
+    	return 'placeholder';
+    }
 
 }
