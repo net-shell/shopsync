@@ -6,29 +6,32 @@
 	<link rel="stylesheet" href="{{ asset('css/foundation.min.css') }}" />
 	<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" />
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+	<style>@yield('css')</style>
 </head>
 <body>
 
-<div class="icon-bar vertical left">
-	<a class="item" tabindex="0">
-		<i class="fa fa-home fa-fw"></i>
-		<label>Home</label>
+<div class="icon-bar vertical left fixed" style="z-index:100">
+	@foreach(['|bar-chart|home', 'products|book|product', 'orders|shopping-cart|order', 'settings|cog|settings'] as $item)
+	<?php $item = explode('|', $item); ?>
+	<a href="{{ url('/'.$item[2]) }}"
+		class="item {{ Request::is("$item[2]", "$item[2]/*") ?'active':'' }}" tabindex="0">
+		<i class="fa fa-{{ $item[1] }} fa-fw"></i>
+		<label>{{ ucfirst($item[0]) }}</label>
 	</a>
-	<a class="item" tabindex="0">
-		<i class="fa fa-book fa-fw"></i>
-		<label>Products</label>
-	</a>
-	<a class="item" tabindex="0">
-		<i class="fa fa-cog fa-fw"></i>
-		<label>Settings</label>
-	</a>
+	@endforeach
 </div>
 
-<div class="fixed" style="left:96px">
+<div class="fixed">
 	<div class="layout header">
 		<h1>ShopSync</h1>
+		<div class="row clear">
+			<h2 class="left">@yield('title')</h2>
+			<div class="right">
+				@yield('actions')
+			</div>
+		</div>
 	</div>
-	<div>
+	<div class="row">
 		@yield('body')
 	</div>
 </div>

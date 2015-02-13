@@ -7,6 +7,7 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-Route::resources([
-	'product' => 'ProductController',
-]);
+
+//Route::group(['prefix' => 'product'], function(){
+	Route::resource('product', 'ProductController');
+//});

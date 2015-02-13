@@ -1,4 +1,4 @@
-<?php namespace Netshell\ShopSync\Contracts;
+<?php namespace Netshell\Sync\Contracts;
 
 interface Driver {
 

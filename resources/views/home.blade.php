@@ -1,17 +1,19 @@
-@extends('app')
+@extends('layout')
 
-@section('content')
-<div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">Home</div>
-
-				<div class="panel-body">
-					You are logged in!
-				</div>
-			</div>
-		</div>
+@section('body')
+<div class="row">
+	<div class="panel">
+		<h2>
+			Hi
+			<b>{{ $user->name }}</b>,
+		</h2>
+		<p>
+			By using this service you agree to give us all your cash and sacrifice your firstborn pet in ShopSync's name.
+		</p>
+		<a class="success button" href="{{ url('/auth/logout') }}">
+			<i class="fa fa-check"></i>
+			I'm fine with that
+		</a>
 	</div>
 </div>
 @endsection

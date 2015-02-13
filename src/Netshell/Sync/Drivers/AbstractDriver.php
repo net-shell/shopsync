@@ -1,12 +1,12 @@
-<?php namespace Netshell\ShopSync\Drivers;
+<?php namespace Netshell\Sync\Drivers;
 
-use Netshell\ShopSync\Contracts\Driver;
+use Netshell\Sync\Contracts\Driver;
 
 abstract class AbstractDriver implements Driver {
 
 	protected $config;
 
-	public function __construct(Array $config) {
+	public function __construct($config = null) {
 		$this->config = $config;
 	}
 

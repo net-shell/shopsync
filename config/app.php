@@ -136,7 +136,10 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 
+		'Laravel\Socialite\SocialiteServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
 		'Netshell\ShopSync\ShopSyncServiceProvider',
+
 		/*
 		 * Application Service Providers...
 		 */
@@ -194,6 +197,9 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
+		'Socialite' => 'Laravel\Socialite\Facades\Socialite',
+		'Form'		=> 'Illuminate\Html\FormFacade',
+		'HTML'	    => 'Illuminate\Html\HtmlFacade',
 		'ShopSync'  => 'Netshell\ShopSync\Facades\ShopSync',
 	],
 
