@@ -12,26 +12,19 @@
 @stop
 
 @section('body')
+	<?php dd(ShopSync::products('ebay')); ?>
 	<table width="100%">
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th width="150">Price</th>
-				<th width="150">Microweber</th>
-				<th width="150">Ebay</th>
+				<th>Microweber</th>
+				<th>Ebay</th>
 			</tr>
 		</thead>
 		<tbody>
 	@foreach($products as $product)
-		<tr onclick="window.document.location='{{ action('ProductController@edit', $product->id) }}';">
-			<td>
-				<a href="{{ action('ProductController@edit', $product->id) }}">
-					{{ $product->data->name or "Product #$product->id" }}
-				</a>
-			</td>
-			<td>{{ $product->data->price or '-' }}</td>
-	 		<td>{{ count($product->microwebers) }}</td>
-	 		<td>{{ count($product->ebays) }}</td>
+		<tr>
+			<td>{{ $product->synced('microweber')['name'] }}</td>
+	 		<td>{{ $product->synced('ebay')['name'] }}</td>
 	 	</tr>
 	@endforeach
 		</tbody>

@@ -8,24 +8,8 @@ class Product extends Model {
 	public $timestamps = false;
 	protected $fillable = ['user_id'];
 
-	public function ebays() {
-		return $this->hasMany('Netshell\ShopSync\Models\EbayProduct');
-	}
-
-	public function microwebers() {
-		return $this->hasMany('Netshell\ShopSync\Models\MicroweberProduct');
-	}
-
-	public function data() {
-		return $this->hasOne('Netshell\ShopSync\Models\ProductData');
-	}
-
     public function user() {
         return $this->belongsTo('App\User');
-    }
-
-    function getNameAttribute() {
-    	return 'placeholder';
     }
 
 	public function newQuery($excludeDeleted = true) {
