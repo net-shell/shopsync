@@ -3,16 +3,18 @@
 @section('title', 'Products')
 
 @section('actions')
-	<ul class="button-group">
-		<li><a href="{{ action('ProductController@create') }}" class="success button">
-			<i class="fa fa-plus"></i>
-			Create
-		</a></li>
+	<button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button dropdown">
+		<i class="fa fa-plus"></i>
+		Add New
+	</button>
+	<br>
+	<ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+	  <li><a href="{{ action('ProductController@create') }}">Microweber</a></li>
+	  <li><a href="{{ action('ProductController@create') }}">Ebay</a></li>
 	</ul>
 @stop
 
 @section('body')
-	<?php dd(ShopSync::products('ebay')); ?>
 	<table width="100%">
 		<thead>
 			<tr>
@@ -23,8 +25,8 @@
 		<tbody>
 	@foreach($products as $product)
 		<tr>
-			<td>{{ $product->synced('microweber')['name'] }}</td>
-	 		<td>{{ $product->synced('ebay')['name'] }}</td>
+			<td>{{ var_dump($product) }}</td>
+	 		<td>{{ $product->get('id') }}</td>
 	 	</tr>
 	@endforeach
 		</tbody>

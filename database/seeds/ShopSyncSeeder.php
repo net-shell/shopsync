@@ -12,8 +12,11 @@ class ShopSyncSeeder extends Seeder
         for($ii=1; $ii<=3; $ii++) {
             $p = new Product(['user_id' => 1]);
             $p->save();
-            $p->microwebers()->save(new MicroweberProduct(['name' => 'Microweber Test'.$ii]));
-            $p->ebays()->save(new EbayProduct(['name' => 'Ebay Test '.$ii]));
+            (new MicroweberProduct(['name' => 'Microweber Test'.$ii]))
+            	->product()->associate($p)->save();
+            (new EbayProduct(['name' => 'Ebay Test '.$ii]))
+            	->product()->associate($p)->save();
+            $p->save();
         }
     }
 

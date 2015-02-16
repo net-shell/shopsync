@@ -8,6 +8,8 @@ use Netshell\ShopSync\Models\ProductData;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
+use ShopSync;
+
 class ProductController extends Controller {
 
 	public function __construct()
@@ -17,7 +19,9 @@ class ProductController extends Controller {
 
 	public function index()
 	{
-		return view('product.index')->withProducts(Product::all());
+		$products = ShopSync::products();
+		dd($products);
+		return view('product.index')->withProducts($products);
 	}
 
 	public function create()

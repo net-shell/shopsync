@@ -1,6 +1,7 @@
 <?php namespace Netshell\ShopSync\Models;
 
 use Auth;
+use ShopSync;
 use Exception;
 
 class Product extends Model {
@@ -14,10 +15,11 @@ class Product extends Model {
 
 	public function newQuery($excludeDeleted = true) {
 		$isAuth = Auth::check();
-		if(!$isAuth) {
+		$isCli = app()->runningInConsole();
+		if(!$isAuth and !$isCli) {
 			throw new Exception('Unauthorized query!');
 		}
-		if(1 == Auth::user()->id) {
+		if($isCli or 1 == Auth::user()->id) {
 			return parent::newQuery($excludeDeleted);
 		}
 		return parent::newQuery($excludeDeleted)

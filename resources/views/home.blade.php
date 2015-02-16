@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'Dashboard')
+
 @section('body')
 <div class="row">
 	<div class="panel">

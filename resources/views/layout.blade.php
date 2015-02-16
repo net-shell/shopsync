@@ -21,7 +21,7 @@
 	@endforeach
 </div>
 
-<div class="fixed">
+<div>
 	<div class="layout header">
 		<h1>ShopSync</h1>
 		<div class="row clear">

@@ -4,28 +4,26 @@ use Netshell\Sync\SyncManager;
 
 class ShopSyncManager extends SyncManager {
 
-	//
-
-	public function products($driver) {
-		return (new $this->lync)->hasOne($this->driverModels[$driver]);//->first();
+	// Shortcuts
+	public function products() {
+		return $this->centers();
 	}
 
-
 	// Drivers
-
-	protected $lync = 'Netshell\ShopSync\Models\Product';
+	protected $centerModel = 'Netshell\ShopSync\Models\Product';
+	protected $centerForeign = 'product_id';
+	protected $syncFields = ['name'];
 	protected $driverModels = [
 		'ebay'		  => 'Netshell\ShopSync\Models\EbayProduct',
 		'microweber'  => 'Netshell\ShopSync\Models\MicroweberProduct'
 	];
 
-	protected function createMicroweberDriver()
-	{
+	// Built-in drivers
+	protected function createMicroweberDriver() {
 		return $this->buildDriver('Netshell\ShopSync\Drivers\Microweber', 'microweber');
 	}
 
-	protected function createEbayDriver()
-	{
+	protected function createEbayDriver() {
 		return $this->buildDriver('Netshell\ShopSync\Drivers\Ebay', 'ebay');
 	}
 

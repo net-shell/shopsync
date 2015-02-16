@@ -2,7 +2,7 @@
 
 interface Driver {
 
-	public function __construct(Array $config);
+	public function __construct($config);
 	public function sync();
 
 }

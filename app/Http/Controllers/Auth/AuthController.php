@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use Socialite;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Database\QueryException;
 use Redirect;
 use App\Services\UserProvider;
 
@@ -33,7 +34,8 @@ class AuthController extends Controller
 
 	function getLogout()
 	{
-		$this->auth->logout();
+		try { $this->auth->logout(); }
+		catch(QueryException $e) {}
 		return Redirect::back();
 	}
 
