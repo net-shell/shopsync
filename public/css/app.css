@@ -17,29 +17,17 @@ h1,h2,h3,h4,h5,h6,.heading,#site-title {
 table tr td input[type=checkbox] { margin: 0rem; }
 
 #site-title {
-	background-color: #111;
+	background-color: #333;
+	padding: 1em 0;
 }
 #site-title h1 {
 	font-weight: bold;
 	font-size: 2rem;
 	margin: 0;
-	padding-top: .5rem;
-	text-align: right;
+	text-align: center;
 }
 #site-title h1 a { color: #379937; }
 #site-title h1 a:hover { color: #40C840; }
-#site-title .user > * {
-	display: block;
-	float: left;
-}
-#site-title .user img {
-	width: 3rem;
-	height: 3rem;
-}
-#site-title .user .name {
-	font-size: 2em;
-	margin-left: .2em;
-}
 #nav {
 	background-color: #333;
 }
@@ -89,25 +77,6 @@ table tr td input[type=checkbox] { margin: 0rem; }
 #footer {
 	text-align: center;
 }
-
-.datagrid .row {
-	border-bottom: 1px solid #ccc;
-	cursor: pointer;
-	color: #286327;
-	transition: background-color 0.28s ease;
-}
-.datagrid .selected {
-	background: #38C840;
-	border-color: #ccc;
-	border-bottom-style: dotted;
-	color: #152C15;
-}
-.datagrid .row:hover { color: #152C15; }
-.datagrid .row.clicked { background: #45EB45; }
-.datagrid .row.clicked,
-.datagrid .row:hover { border-color: #152C15; }
-.datagrid .columns { padding: .6rem .6rem .2rem; }
-
 
 .pagination .active {
 	color: #379937;

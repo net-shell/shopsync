@@ -1,16 +1,11 @@
 <?php namespace Netshell\ShopSync\Models;
 
-use Auth;
-use ShopSync;
-use Exception;
-
 class Product extends Model {
 
-	public $timestamps = false;
-	protected $fillable = ['user_id'];
+	protected $fillable = ['name', 'description'];
 
-	public function user() {
-		return $this->belongsTo('App\User');
+	public function listing() {
+		return $this->belongsTo('Netshell\ShopSync\Models\Listing');
 	}
 
 	public function categories() {
@@ -21,17 +16,20 @@ class Product extends Model {
 		return $this->hasMany('Netshell\ShopSync\Models\Order');
 	}
 
-	public function newQuery($excludeDeleted = true) {
-		$isAuth = Auth::check();
-		$isCli = app()->runningInConsole();
-		if(!$isAuth and !$isCli) {
-			throw new Exception('Unauthorized query!');
+	public function prices() {
+		return $this->hasMany('Netshell\ShopSync\Models\Price');
+	}
+	
+	public function quantities() {
+		return $this->hasMany('Netshell\ShopSync\Models\Quantity');
+	}
+	
+	public function getDefaultPriceAttribute() {
+		$default = app()['config']['shopsync.currencyDefault'];
+		$price = $this->prices()->whereCurrency($default)->first();
+		if(is_null($price)) {
+			return null;
 		}
-		if($isCli or 1 == Auth::user()->id) {
-			return parent::newQuery($excludeDeleted);
-		}
-		return parent::newQuery($excludeDeleted)
-			->where('user_id', '=', Auth::user()->id);
-    }
-
+		return $price->value;
+	}
 }

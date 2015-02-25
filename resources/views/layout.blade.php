@@ -11,21 +11,11 @@
 </head>
 <body>
 <div id="site-title">
-	<div class="row">
-      	<div class="small-6 columns">
-			<h1>
-				<a href="{{ url('/') }}">
-					Sh<i class="fa fa-circle-o-notch"></i>pSync
-				</a>
-			</h1>
-      	</div>
-      	<div class="small-6 columns">
-			<a href="" class="user">
-				<img src="{{ Auth::user()->avatar }}" />
-				<div class="name">{{ Auth::user()->name }}</div>
-			</a>
-		</div>
-      </div>
+	<h1>
+		<a href="{{ url('/') }}">
+			Sh<i class="fa fa-circle-o-notch"></i>pSync
+		</a>
+	</h1>
 </div>
 <div id="nav">
 	<div class="row">@include('navigation')</div>
@@ -56,6 +46,9 @@
 <script src="{{ asset('js/jquery.tokeninput.js') }}"></script>
 <script src="{{ asset('js/foundation.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
-<script>@yield('js')</script>
+<script>
+$(document).foundation()
+@yield('js')
+</script>
 </body>
 </html>

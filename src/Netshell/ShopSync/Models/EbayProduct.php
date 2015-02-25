@@ -4,8 +4,7 @@ class EbayProduct extends Model {
 
 	protected $table = 'products_ebay';
 
-	function product()
-	{
+	function product() {
 		return $this->belongsTo('Netshell\ShopSync\Models\Product');
 	}
 

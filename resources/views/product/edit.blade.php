@@ -1,8 +1,14 @@
 @extends('layout')
 
+@include('shit.price-field')
+
 @section('title', 'Edit Product')
 
 @section('js')
+var model = {
+  prices: {!! $pricesJson !!},
+  currency: "{{ app()['config']['shopsync.currencyDefault'] }}"
+}
 $(document).ready(function() {
     $("#categories").tokenInput("{{ url('api/v1/categories') }}", {
       theme: 'facebook', preventDuplicates: true,
@@ -11,36 +17,37 @@ $(document).ready(function() {
       onDelete: function(c){ $.ajax("{{ url('api/v1/products/'.$product->id.'/detach') }}/"+c.id) },
       resultsFormatter: function(c){ return "<li><img src='/images/icon-"+c.driver+".png' />"+"<div style='display:inline-block;padding-left:10px;'>"+c.name+"</div></li>" },
       tokenFormatter: function(c){ return "<li><p><img src='/images/icon-"+c.driver+".png' /> "+c.name+"</p></li>" }
-    });
-});
+    })
+    
+    $(".save.button").click(function(){
+      submitForm({ prices: model.prices })
+    })
+})
+@stop
+
+@section('actions')
+<a class="cancel button" href="{{ URL::previous() }}">{{ trans('Cancel') }}</a>
+<a class="save button">
+  <i class="fa fa-check"></i>
+  {{ trans('Save') }}
+</a>
 @stop
 
 @section('body')
-  <div class="panel">
-{!! Form::model($product, ['url' => action('ProductController@update', $product->id), 'method' => 'put']) !!}
-    <div class="clearfix">
-      <h2 class="left">Details</h2>
-      <button type="submit" class="right button">
-        <i class="fa fa-check"></i>
-        {{ trans('Save') }}
-      </button>
-    </div>
-  
+<div class="row">
+  <div class="large-8 columns">
+    {!! Form::model($product, ['url' => action('ProductController@update', $product->id), 'method' => 'put']) !!}
+    <h2>Details</h2>
     <div class="row">
-      <div class="large-9 columns">
+      <div class="medium-9 columns">
         <label>Name
           {!! Form::text('name', null, ['required']) !!}
         </label>
       </div>
-      <div class="large-3 columns">
+      <div class="medium-3 columns">
         <div class="row collapse">
           <label>Price</label>
-          <div class="small-9 columns">
-            {!! Form::text('price') !!}
-          </div>
-          <div class="small-3 columns">
-            <span class="postfix">&euro;</span>
-          </div>
+          @yield('price-field')
         </div>
       </div>
     </div>
@@ -56,10 +63,14 @@ $(document).ready(function() {
       <div class="large-12 columns">
         <label>
           Description
-          <textarea rows="5" placeholder="Not required"></textarea>
+          <textarea name="description" rows="5" placeholder="Not required">{{ $product->description }}</textarea>
         </label>
       </div>
     </div>
-{!! Form::close() !!}
+    {!! Form::close() !!}
   </div>
+  <div class="large-4 columns">
+    <h2>Sync</h2>
+  </div>
+</div>
 @stop
