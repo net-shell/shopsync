@@ -1,13 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-
-use Netshell\ShopSync\Models\Product;
-use Netshell\ShopSync\Models\ProductData;
-
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
+use Netshell\ShopSync\Models\Product;
 use ShopSync;
 
 class ProductController extends Controller {
@@ -20,8 +15,12 @@ class ProductController extends Controller {
 	public function index()
 	{
 		$products = ShopSync::products();
-		dd($products);
+		//dd($products);
 		return view('product.index')->withProducts($products);
+	}
+
+	public function edit(Product $product) {
+		return view('product.edit')->withProduct($product);
 	}
 
 	public function create()

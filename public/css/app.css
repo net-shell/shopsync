@@ -1,20 +1,121 @@
+/*
+#45EB45 1
+#40C840 2
+#379937 0
+#286328 3
+#152C15 4
+*/
 body {
 	font-family: sans-serif;
 	background-color: #eee;
 }
 
-h1,h2,h3,h4,h5,h6,.heading {
+h1,h2,h3,h4,h5,h6,.heading,#site-title {
 	font-family: 'Alegreya Sans', sans-serif;
 	font-weight: 300;
+}
+table tr td input[type=checkbox] { margin: 0rem; }
+
+#site-title {
+	background-color: #111;
+}
+#site-title h1 {
+	font-weight: bold;
+	font-size: 2rem;
+	margin: 0;
+	padding-top: .5rem;
+	text-align: right;
+}
+#site-title h1 a { color: #379937; }
+#site-title h1 a:hover { color: #40C840; }
+#site-title .user > * {
+	display: block;
+	float: left;
+}
+#site-title .user img {
+	width: 3rem;
+	height: 3rem;
+}
+#site-title .user .name {
+	font-size: 2em;
+	margin-left: .2em;
+}
+#nav {
+	background-color: #333;
+}
+#nav .icon-bar { display: block; }
+#nav .icon-bar .item {
+	padding: .5rem;
+	transition: background-color 0.3s ease;
+}
+#nav .icon-bar .item > * { transition: color 1s ease; }
+#nav .icon-bar > a.active, .icon-bar>a.active:hover { background: #379937; }
+#nav .icon-bar > a:hover { background: #222; }
+#nav .icon-bar > a:hover > * { color: #40C840; }
+#nav .icon-bar > * i { opacity: 0.5; }
+
+#header {
+	background-color: #379937;
+	padding: .2rem 0;
+}
+#header h2 {
+	color: #fff;
+	font-size: 2em;
+	margin: 0;
+	padding-top: .2em;	
+}
+#actions {
+	text-align: right;
+}
+#actions .button {
+	margin: 0;
+	color: #45EB45;
+	transition: background-color .3s ease;
+	background-color: #286328;
+}
+#actions .button:hover {
+	border-color: transparent;
+	background-color: #45EB45;
+	color: #286328;
+}
+#actions .button.disabled {
+	background: none;
+	border-color: transparent;
+	color: inherit;
+}
+
+#body { padding-top: 1rem; }
+
+#footer {
 	text-align: center;
 }
 
-.header.layout h1 {
-	color: #999;
-	font-weight: 100;
-	font-size: 4em;
+.datagrid .row {
+	border-bottom: 1px solid #ccc;
+	cursor: pointer;
+	color: #286327;
+	transition: background-color 0.28s ease;
 }
-.header.layout h2 {
-	color: #092;
-	font-weight: normal;
+.datagrid .selected {
+	background: #38C840;
+	border-color: #ccc;
+	border-bottom-style: dotted;
+	color: #152C15;
+}
+.datagrid .row:hover { color: #152C15; }
+.datagrid .row.clicked { background: #45EB45; }
+.datagrid .row.clicked,
+.datagrid .row:hover { border-color: #152C15; }
+.datagrid .columns { padding: .6rem .6rem .2rem; }
+
+
+.pagination .active {
+	color: #379937;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+ul.token-input-list-facebook {
+	width: auto;
+	border-color: #ccc;
 }

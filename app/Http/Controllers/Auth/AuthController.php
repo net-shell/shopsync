@@ -34,9 +34,8 @@ class AuthController extends Controller
 
 	function getLogout()
 	{
-		try { $this->auth->logout(); }
-		catch(QueryException $e) {}
-		return Redirect::back();
+		$this->auth->logout();
+		return redirect('/');
 	}
 
 	function __construct(Guard $auth)

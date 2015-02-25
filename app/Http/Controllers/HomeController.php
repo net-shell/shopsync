@@ -12,7 +12,6 @@ class HomeController extends Controller {
 
 	public function index(Guard $auth, ShopSync $shopsync)
 	{
-		//dd($shopsync::driver('ebay'));
 		return view('home')->withUser($auth->user());
 	}
 

@@ -1,20 +1,8 @@
 <?php namespace Netshell\Sync\Star;
 
-class Center {
+use Netshell\Sync\ModelContainer;
 
-	protected $model;
-
-	function __construct($model) {
-		$this->model = $model;
-	}
-
-	function get($property) {
-		return $this->model->$property;
-	}
-
-	function set($property, $value) {
-		$this->model->$property = $value;
-	}
+class Center extends ModelContainer {
 
 	static function fromCollection($centers) {
 		$result = array();

@@ -1,7 +1,6 @@
 <html>
 	<head>
 		<link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-
 		<style>
 			body {
 				margin: 0;
@@ -12,26 +11,20 @@
 				display: table;
 				font-family: 'Lato';
 			}
-
 			.container {
 				text-align: center;
 				display: table-cell;
 				vertical-align: middle;
 			}
-
 			.content {
 				text-align: center;
 				display: inline-block;
 			}
-
 			.title {
 				font-size: 96px;
 				margin-bottom: 40px;
 			}
-
-			.quote {
-				font-size: 24px;
-			}
+			.quote { font-size: 24px; }
 		</style>
 	</head>
 	<body>
@@ -40,6 +33,11 @@
 				<div class="title">ShopSync</div>
 				<div class="quote">
 					<a href="{{ url('/auth') }}">Click to sign in</a>
+				</div>
+				<div>
+					<a href="//facebook.com/pages/ShopSync/1552839424991984">
+						ShopSync on Facebook
+					</a>
 				</div>
 			</div>
 		</div>

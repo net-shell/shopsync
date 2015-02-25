@@ -9,9 +9,17 @@ class Product extends Model {
 	public $timestamps = false;
 	protected $fillable = ['user_id'];
 
-    public function user() {
-        return $this->belongsTo('App\User');
-    }
+	public function user() {
+		return $this->belongsTo('App\User');
+	}
+
+	public function categories() {
+		return $this->belongsToMany('Netshell\ShopSync\Models\Category');
+	}
+
+	public function orders() {
+		return $this->hasMany('Netshell\ShopSync\Models\Order');
+	}
 
 	public function newQuery($excludeDeleted = true) {
 		$isAuth = Auth::check();

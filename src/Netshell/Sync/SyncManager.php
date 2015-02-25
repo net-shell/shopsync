@@ -10,8 +10,8 @@ class SyncManager extends Manager {
 
 	public function observe()
 	{
-    	foreach ($this->driverModels as $driver => $model) {
-    		$model::observe(new ModelObserver);
+    		foreach ($this->driverModels as $driver => $model) {
+    			$model::observe(new ModelObserver);
 		}
 	}
 
@@ -59,6 +59,7 @@ class SyncManager extends Manager {
 	protected $centerForeign;
 	protected $syncFields;
 	protected $driverModels;
+	protected $sourceDriver;
 
 	public function getDriverModel($driver)
 	{

@@ -1,14 +1,10 @@
 <?php namespace Netshell\Sync\Star;
 
-class Ray {
+use Netshell\Sync\ModelContainer;
 
-	protected $model;
+class Ray extends ModelContainer {
+
 	public $driver;
-
-	function __construct($model)
-	{
-		$this->model = $model;
-	}
 
 	public function getHash()
 	{

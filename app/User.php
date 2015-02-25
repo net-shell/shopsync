@@ -28,7 +28,11 @@ class User extends Model implements AuthenticatableContract {
 				return "data:$imageType;base64,$imageData";
 			});
 		}
-		return null;
+		//return \Cache::remember('user.noAvatar', 1440, function() {
+			$file = storage_path('avatar.jpg');
+			$data = file_get_contents($file);
+			return 'data:image/jpeg;base64,'.base64_encode($data);
+		//});
 	}
 
 }
