@@ -25,7 +25,7 @@ class SyncController extends Controller
 			->withProduct($product);
 	}
 
-	public function show($driver, Product $product)
+	public function show(Product $product, $driver)
 	{
 		$ray = ShopSync::ray($product->id, $driver);
 		return view("drivers.$driver")

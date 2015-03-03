@@ -1,0 +1,8 @@
+web1:
+  name: shopsync
+  shared_writable_dirs:
+    - storage
+  document_root: public
+  php_extensions:
+    - mysql
+    - mcrypt
