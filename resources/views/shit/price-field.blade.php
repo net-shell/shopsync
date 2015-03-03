@@ -44,7 +44,8 @@ $(document).ready(function() {
     modelSet("currency", $(this).data("key"))
     drop.prev().find(".bind").text(model("currency"))
     if(!price() > 0) {
-      var ph = "("+price(model("currencyDefault"))+")"
+      var ph = price(model("currencyDefault"))
+      ph = ph ? ("(" + ph + ")") : "";
       wrap.find("input").attr("placeholder", ph)
       //wrap.find(".has-tip").foundation("tooltip", "show")
     }

@@ -32,10 +32,19 @@ class ProductController extends Controller
 
 	public function create()
 	{
-		return view('product.create');
+		$listings = Listing::all()->lists('name','id');
+		return view('product.create')
+			->withListings($listings);
 	}
-	
-	public function update(Product $product, Request $request) {
+
+	public function store(Product $product)
+	{
+		$product->autofill()->save();
+		return redirect(action('ProductController@show', $product->id));
+	}
+
+	public function update(Product $product, Request $request)
+	{
 		$product->autofill()->save();
 		$newPrices = json_decode($request->get('prices'));
 		foreach ($newPrices as $currency => $value) {
@@ -46,17 +55,16 @@ class ProductController extends Controller
 				continue;
 			}
 			if(is_null($price)) {
-				$price = new Price(['currency' => $currency]);
+				$price = new Price(['currency' => $currency, 'value' => $value]);
 				$price->product()->associate($product)->save();
 			}
-			if($value > 0) {
-				if($price->value == $value) {
-					continue;
+			else {
+				if($value > 0) {
+					$price->value = $value;
+					$price->save();
+				} else {
+					$price->delete();
 				}
-				$price->value = $value;
-				$price->save();
-			} else {
-				$price->delete();
 			}
 		}
 		return redirect(action('ProductController@index'));

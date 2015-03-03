@@ -1,43 +1,42 @@
 @extends('layout')
 
+@include('shit.datagrid')
+
 @section('title', 'Categories')
 
 @section('body')
 
-	<table width="100%">
-	@if(isset($category) and $category->id>1)
-		<thead>
-			<tr>
-				<td>
-					<a href="{{ action('CategoryController@show', $category->parent_id) }}">
-						<i class="fa fa-3x fa-chevron-circle-left"></i>
-					</a>
-				</td>
-				<td>
-					<h2 style="margin:0">{{ $category->name }}</h2>
-				</td>
-			</tr>
-		</thead>
-	@endif
+@if(isset($category) and $category->id>1)
+<a href="{{ action('CategoryController@show', $category->parent_id) }}">
+	<i class="fa fa-3x fa-chevron-circle-left"></i>
+</a>
+<h2 style="margin:0">{{ $category->name }}</h2>
+@endif
+<div class="datagrid">
+	<div class="disabled header row">
+		<div class="small-8 columns"></div>
+		<div class="small-2 columns">Driver</div>
+		<div class="small-2 columns">Products</div>
+	</div>
 	@foreach($categories as $category)
-		<tr>
-			<td style="text-align:center; width:60px">
-		      	<input id="cb{{ $category->id }}" type="checkbox">
-			</td>
-			<td>
-		      	<label for="cb{{ $category->id }}">
-					@if(count($category->children))
-					<a href="{{ action('CategoryController@show', $category->id) }}">
-						{{ $category->name }}
-					</a>
-					@else
-						{{ $category->name }}
-					@endif
-		      	</label>
-			</td>
-		</tr>
+	<div class="row" data-href="{{ action('CategoryController@show', $category->id) }}">
+		<div class="small-8 columns">
+			<i class="check fa fa-square-o fa-fw"></i>
+			@if(count($category->children))
+				{{ $category->name }}
+			@else
+				<i>{{ $category->name }}</i>
+			@endif
+		</div>
+		<div class="small-2 columns">
+			<img src="{{ asset("/images/icon-$category->driver.png") }}" />
+		</div>
+		<div class="small-2 columns">
+			{{ count($category->products) }}
+		</div>
+ 	</div>
 	@endforeach
-	</table>
+</div>
 
-	{!! $categories->render() !!}
+{!! $categories->render() !!}
 @stop

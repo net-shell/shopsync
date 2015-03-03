@@ -17,21 +17,15 @@
 
 @section('body')
   <div class="row">
-    <div class="large-10 columns">
+    <div class="large-9 columns">
       <label>Name
         <input name="name" type="text" required />
       </label>
     </div>
-    <div class="large-2 columns">
-      <div class="row collapse">
-        <label>Price</label>
-        <div class="small-9 columns">
-          <input name="price" type="text" placeholder="0.00" required />
-        </div>
-        <div class="small-3 columns">
-          <span class="postfix">&euro;</span>
-        </div>
-      </div>
+    <div class="large-3 columns">
+      <label>Listing
+        {!! Form::select('listing_id', $listings) !!}
+      </label>
     </div>
   </div>
   <div class="row">

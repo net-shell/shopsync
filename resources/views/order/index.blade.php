@@ -1,28 +1,24 @@
 @extends('layout')
 
+@include('shit.datagrid')
+
 @section('title', 'Orders')
 
 @section('body')
-<table width="100%">
-<thead>
-	<tr>
-		<td>Product</td>
-		<td>Created</td>
-	</tr>
-</thead>
-@foreach($orders as $order)
-	<tr>
-		<td>
-			<a href="{{ action('ProductController@show', $order->product->id) }}">
-				{{ $order->product->id }}
-			</a>
-		</td>
-		<td>
-			<a href="{{ action('OrderController@show', $order->id) }}">
-				{{ $order->created_at->diffForHumans() }}
-			</a>
-		</td>
-	</tr>
-@endforeach
-</table>
+<div class="datagrid">
+	<div class="disabled header row">
+		<div class="small-8 columns">Product</div>
+		<div class="small-4 columns">Ordered</div>
+	</div>
+	@foreach($orders as $order)
+	<div class="row" data-href="{{ action('OrderController@show', $order->id) }}">
+		<div class="small-8 columns">
+			{{ $order->product->name }}
+		</div>
+		<div class="small-4 columns">
+			{{ $order->created_at->diffForHumans() }}
+		</div>
+	</div>
+	@endforeach
+</div>
 @stop

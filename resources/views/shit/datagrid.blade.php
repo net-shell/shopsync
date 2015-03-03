@@ -11,23 +11,25 @@ $(document).ready(function() {
 		}
 		row.addClass("clicked")
 
-		var rows = row.siblings().add(row)
+		var allRows = row.siblings().add(row)
 		if(!e.ctrlKey) {
-			rows.removeClass("selected")
+			allRows.removeClass("selected")
 		}
-		if(e.shiftKey && lastClicked && row != lastClicked) {
-			console.log(rows.index(row) < rows.index(lastClicked))
-			if(rows.index(row) > rows.index(lastClicked))
-				rows = lastClicked.nextUntil(row)
-			else rows = lastClicked.prevUntil(row)
-			rows = rows.add(row).add(lastClicked)
+		var rows = row
+		if(e.shiftKey) {
+			if(lastClicked && row != lastClicked) {
+				if(allRows.index(row) > allRows.index(lastClicked))
+					rows = lastClicked.nextUntil(row)
+				else rows = lastClicked.prevUntil(row)
+				rows = rows.add(row).add(lastClicked)
+			}
 		}
-		else rows = row
-		if(e.ctrlKey)
-			rows.toggleClass("selected")
+		if(e.ctrlKey) {
+			row.toggleClass("selected")
+		}
 		else
 			rows.addClass("selected")
-		rows.each(function() {
+		allRows.each(function() {
 			var s = $(this).is(".selected")
 			$(this).find("i.check").toggleClass("fa-square-o", !s)
 				.toggleClass("fa-check-square-o", s)

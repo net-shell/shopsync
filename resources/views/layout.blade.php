@@ -37,6 +37,7 @@
 </div>
 <div id="footer">
 	<hr />
+	&copy; 2015 <a href="//netshell.biz">NetShell</a> &bull;
 	<a href="//github.com/netshell-ltd/shopsync/issues" target="_blank">
 		<i class="fa fa-support fa-fw"></i>
 		{{ trans('Support') }}

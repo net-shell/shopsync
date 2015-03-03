@@ -31,7 +31,7 @@ class CreateShopsyncInitial extends Migration {
 		{
 			$table->bigIncrements('id');
 			$table->string('name');
-			$table->text('description');
+			$table->text('description')->nullable();
 			$table->integer('listing_id');
 			$table->integer('updated_by')->nullable();
 			$table->timestamps();
@@ -42,7 +42,7 @@ class CreateShopsyncInitial extends Migration {
 		{
 			$table->bigIncrements('id');
 			$table->string('name');
-			$table->text('description');
+			$table->text('description')->nullable();
 			$table->bigInteger('product_id');
 			$table->timestamps();
 		});
@@ -51,7 +51,7 @@ class CreateShopsyncInitial extends Migration {
 		{
 			$table->bigIncrements('id');
 			$table->string('name');
-			$table->text('description');
+			$table->text('description')->nullable();
 			$table->bigInteger('product_id');
 			$table->timestamps();
 		});

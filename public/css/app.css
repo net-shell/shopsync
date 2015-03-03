@@ -84,12 +84,6 @@ table tr td input[type=checkbox] { margin: 0rem; }
 	text-align: center;
 }
 
-.pagination .active {
-	color: #379937;
-	font-weight: bold;
-	text-decoration: underline;
-}
-
 ul.token-input-list-facebook {
 	width: auto;
 	border-color: #ccc;
@@ -98,4 +92,23 @@ ul.token-input-list-facebook {
 
 ul.token-input-list-facebook li input {
 	height: 2.2em;
+}
+
+ul.pagination {
+	text-align: center;
+	margin: 1em 0;
+}
+ul.pagination li {
+	display: inline-block;
+	float: none;
+}
+
+ul.pagination li.active {
+	background-color: #fff;
+	color: #379937;
+	font-weight: bold;
+}
+
+ul.pagination li.active span {
+	padding: 0 .5em;
 }

@@ -26,8 +26,18 @@ $(".datagrid").on("selected", function(){
 		$("#actions>.select.delete").removeClass("disabled")
 	}
 })
-$("#actions>.select.edit").click(function(){
-	document.location = $(".datagrid .row.selected").data("href")
+$("#actions .select.edit").click(function(){
+	if(!$(this).is(".disabled"))
+		document.location = $(".datagrid .row.selected").data("href")
+})
+$("#actions .select.delete").click(function(){
+	if(!$(this).is(".disabled")) {
+		if(confirm("{{ trans('You think this is a motherfucking game?') }}"))
+		var ids = $(".datagrid .row.selected").map(function() {
+			return $(this).data("id")
+		})
+		console.log(ids)
+	}
 })
 @stop
 
@@ -65,15 +75,14 @@ $("#actions>.select.edit").click(function(){
 		<div class="small-2 columns">Created</div>
 	</div>
 @foreach($listing->products as $product)
-	<div class="row" data-href="{{ action('ProductController@show', $product->id) }}">
+	<div class="row" data-href="{{ action('ProductController@show', $product->id) }}"
+		data-id="{{ $product->id }}">
 		<div class="small-5 columns">
 			<i class="check fa fa-square-o fa-fw"></i>
 			{{ $product->name }}
 		</div>
-		<div class="small-1 columns">
-			@if($product->id % 2)
-			<a href="#" class="button">2</a>
-			@endif
+		<div class="small-1 columns" style="text-align: center">
+			x
 		</div>
 		<div class="small-2 columns">
 			{{ $product->defaultPrice }}

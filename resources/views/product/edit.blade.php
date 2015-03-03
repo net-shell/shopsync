@@ -14,7 +14,7 @@ $(document).ready(function() {
       resultsFormatter: function(c){ return "<li><img src='/images/icon-"+c.driver+".png' />"+"<div style='display:inline-block;padding-left:10px;'>"+c.name+"</div></li>" },
       tokenFormatter: function(c){ return "<li><p><img src='/images/icon-"+c.driver+".png' /> "+c.name+"</p></li>" }
     })
-    
+
     $(".save.button").click(function(){
       submitForm({ prices: model("prices") })
     })
