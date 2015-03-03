@@ -8,7 +8,8 @@ use Netshell\ShopSync\Models\Price;
 use Netshell\ShopSync\Models\Quantity;
 use ShopSync;
 
-class ProductController extends Controller {
+class ProductController extends Controller
+{
 
 	public function __construct()
 	{
@@ -23,15 +24,10 @@ class ProductController extends Controller {
 
 	public function show(Product $product)
 	{
-		$prices = array();
-		foreach($product->prices as $price) {
-			$prices[$price['currency']] = $price['value'];
-		}
-		$prices = count($prices) ? json_encode($prices) : '{}';
-
+		$synced = ShopSync::rays($product->id);
 		return view('product.edit')
 			->withProduct($product)
-			->with('pricesJson', $prices);
+			->withSynced($synced);
 	}
 
 	public function create()

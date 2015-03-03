@@ -5,7 +5,8 @@ use App\Http\Controllers\Controller;
 use Netshell\ShopSync\Models\Order;
 use ShopSync;
 
-class OrderController extends Controller {
+class OrderController extends Controller
+{
 
 	public function __construct(Order $order) {
 		$this->middleware('auth');

@@ -26,8 +26,13 @@ table tr td input[type=checkbox] { margin: 0rem; }
 	margin: 0;
 	text-align: center;
 }
-#site-title h1 a { color: #379937; }
+
+#site-title h1 a {
+	color: #444;
+	text-shadow: 0px 0px, -1px -1px #111;
+}
 #site-title h1 a:hover { color: #40C840; }
+
 #nav {
 	background-color: #333;
 }
@@ -37,9 +42,10 @@ table tr td input[type=checkbox] { margin: 0rem; }
 	transition: background-color 0.3s ease;
 }
 #nav .icon-bar .item > * { transition: color 1s ease; }
-#nav .icon-bar > a.active, .icon-bar>a.active:hover { background: #379937; }
 #nav .icon-bar > a:hover { background: #222; }
 #nav .icon-bar > a:hover > * { color: #40C840; }
+#nav .icon-bar > a.active,
+.icon-bar > a.active:hover { background: #379937; }
 #nav .icon-bar > * i { opacity: 0.5; }
 
 #header {
@@ -87,4 +93,9 @@ table tr td input[type=checkbox] { margin: 0rem; }
 ul.token-input-list-facebook {
 	width: auto;
 	border-color: #ccc;
+	margin-bottom: 1em;
+}
+
+ul.token-input-list-facebook li input {
+	height: 2.2em;
 }

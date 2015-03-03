@@ -44,6 +44,7 @@
 </div>
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/jquery.tokeninput.js') }}"></script>
+<script src="{{ asset('js/modernizr.js') }}"></script>
 <script src="{{ asset('js/foundation.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script>

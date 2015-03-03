@@ -5,9 +5,11 @@ use Netshell\ShopSync\Models\Category;
 
 use ShopSync;
 
-class CategoryController extends Controller {
+class CategoryController extends Controller
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->middleware('auth');
 	}
 

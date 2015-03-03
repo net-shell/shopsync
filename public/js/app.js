@@ -5,6 +5,8 @@ jQuery.fn.addHidden = function (name, value) {
     });
 };
 
+function dd(v) { console.log(v) }
+
 function submitForm(data) {
       var form = $("form").first()
       if("object"==typeof data) {

@@ -2,17 +2,17 @@
 
 class ModelContainer {
 
-	protected $model;
+	public $model;
 
 	function __construct($model) {
 		$this->model = $model;
 	}
 
-	function get($property) {
+	function __get($property) {
 		return $this->model->$property;
 	}
 
-	function set($property, $value) {
+	function __set($property, $value) {
 		$this->model->$property = $value;
 	}
 

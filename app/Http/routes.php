@@ -22,7 +22,8 @@ Route::group(['prefix'=>'api/v1', 'namespace'=>'Api'], function(){
 });
 
 Route::resources([
-	'products' => 'ProductController',
 	'categories' => 'CategoryController',
-	'orders' => 'OrderController'
+	'orders' => 'OrderController',
+	'products' => 'ProductController',
+	'products.syncs' => 'SyncController',
 ]);

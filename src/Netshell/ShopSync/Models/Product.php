@@ -16,14 +16,30 @@ class Product extends Model {
 		return $this->hasMany('Netshell\ShopSync\Models\Order');
 	}
 
-	public function prices() {
-		return $this->hasMany('Netshell\ShopSync\Models\Price');
-	}
-	
 	public function quantities() {
 		return $this->hasMany('Netshell\ShopSync\Models\Quantity');
 	}
-	
+
+	public function prices() {
+		return $this->hasMany('Netshell\ShopSync\Models\Price');
+	}
+
+	public function getPricesJsonAttribute()
+	{
+		$prices = array();
+		foreach($this->prices as $price) {
+			$prices[$price['currency']] = $price['value'];
+		}
+		return count($prices) ? json_encode($prices) : '{}';	
+	}
+
+	public function getCurrencyAttribute() {
+		if(isset($this->attributes['currency'])) {
+			return $this->attributes['currency'];
+		}
+		 return app()['config']['shopsync.currencyDefault'];
+	}
+
 	public function getDefaultPriceAttribute() {
 		$default = app()['config']['shopsync.currencyDefault'];
 		$price = $this->prices()->whereCurrency($default)->first();

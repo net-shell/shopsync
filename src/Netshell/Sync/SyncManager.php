@@ -30,13 +30,16 @@ class SyncManager extends Manager {
 	public function rays($centerId, $driver = null)
 	{
 		if(!is_null($driver)) {
-	    	return $this->ray($centerId, $driver);
-    	}
-    	$result = array();
-    	foreach ($this->driverModels as $driver => $model) {
-    		$result[] = $this->ray($centerId, $driver);
-    	}
-    	return collect($result);
+	    		return $this->ray($centerId, $driver);
+	    	}
+	    	$result = array();
+	    	foreach ($this->driverModels as $driver => $model) {
+	    		$ray = $this->ray($centerId, $driver);
+	    		if(!is_null($ray)) {
+	    			$result[] = $ray;
+	    		}
+	    	}
+	    	return collect($result);
 	}
 
 	public function ray($centerId, $driver)
@@ -47,6 +50,9 @@ class SyncManager extends Manager {
 		$model = $this->getDriverModel($driver)
     		->where($this->centerForeign, $centerId)
     		->first();
+    		if(is_null($model)) {
+    			return null;
+    		}
 		$ray = new Star\Ray($model);
 		$ray->driver = $driver;
 		return $ray;
@@ -65,6 +71,11 @@ class SyncManager extends Manager {
 	{
 		$class = $this->driverModels[$driver];
 		return new $class;
+	}
+	
+	public function drivers()
+	{
+		return array_keys($this->driverModels);
 	}
 
 	public function getModelDriver($model)
