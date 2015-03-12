@@ -17,7 +17,7 @@ $(document).ready(function() {
 @stop
 
 @section('body')
-@foreach ($drivers as $driver)
+@foreach($drivers as $driver)
 <div>
 	<a class="button" href="{{ action('SyncController@show', ['products' => $product->id, 'driver' => $driver]) }}">
 		{{ $driver }}

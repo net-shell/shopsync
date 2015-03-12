@@ -44,17 +44,29 @@ class SyncManager extends Manager {
 
 	public function ray($centerId, $driver)
 	{
-		if(!array_key_exists($driver, $this->driverModels)) {
-			return null;
-		}
 		$model = $this->getDriverModel($driver)
     		->where($this->centerForeign, $centerId)
     		->first();
     		if(is_null($model)) {
     			return null;
     		}
-		$ray = new Star\Ray($model);
-		$ray->driver = $driver;
+		$ray = new Star\Ray($model, $driver);
+		return $ray;
+	}
+
+	public function rayEnsure($centerId, $driver)
+	{
+		$ray = $this->ray($centerId, $driver);
+		if(!is_null($ray)) {
+			return $ray;
+		}
+
+		$model = $this->getDriverModel($driver);
+		$fk = $this->centerForeign;
+    		$model->$fk = $centerId;
+    		$model->save();
+
+    		$ray = new Star\Ray($model, $driver);
 		return $ray;
 	}
 
@@ -69,6 +81,10 @@ class SyncManager extends Manager {
 
 	public function getDriverModel($driver)
 	{
+		if(!array_key_exists($driver, $this->driverModels)) {
+			return null;
+		}
+
 		$class = $this->driverModels[$driver];
 		return new $class;
 	}

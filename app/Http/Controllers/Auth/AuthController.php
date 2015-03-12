@@ -32,6 +32,10 @@ class AuthController extends Controller
 		return Redirect::intended('/');
 	}
 
+	function me() {
+		return view('me')->withUser($this->auth->user());
+	}
+
 	function getLogout()
 	{
 		$this->auth->logout();
@@ -41,7 +45,9 @@ class AuthController extends Controller
 	function __construct(Guard $auth)
 	{
 		$this->auth = $auth;
-		$this->middleware('guest', ['except' => 'getLogout']);
+		$this->middleware('guest', [
+			'except' => ['getLogout', 'me']
+			]);
 	}
 
 }

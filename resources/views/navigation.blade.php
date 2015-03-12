@@ -14,7 +14,8 @@ $links = [
 		<label>{{ $item[0] }}</label>
 	</a>
 	@endforeach
-	<a href="{{ url('/') }}" class="item" tabindex="0">
+	<a href="{{ url('/me') }}"
+		class="item {{ Request::is("me", "me/*") ?'active':'' }}" tabindex="0">
 		<i class="fa fa-user"></i>
 		<label>{{ Auth::user()->name }}</label>
 	</a>

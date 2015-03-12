@@ -3,10 +3,10 @@
 return [
 
 	'microweber' => [
-	    'client_id' => 'b4K1DBAwO8e6prgypvIa99FyRckmf7w4IqN4ewjA',
-	    'client_secret' => 'yi2tct8Ln9wTeXDWkyT5kZtZSHsxaeqya3YNkYWj',
+	    'client_id' => '1I0YfM77T6tRcBmxY300iS4cT1DFwaeq8jfrb2OM',
+	    'client_secret' => 'Jkze4vVIuR8dz6SRaNL5B5ZlaNwsN9wWtUyJSwTT',
 	    'redirect' => 'http://shopsync.dev/auth/callback',
-	    'trusted' => true
+	    'trusted' => 0
 	],
 
 	'ebay' => [

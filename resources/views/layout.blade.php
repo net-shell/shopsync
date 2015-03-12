@@ -2,8 +2,7 @@
 <html>
 <head>
 	<title>@yield('title') - ShopSync</title>
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Alegreya+Sans:100,400,700" />
-	<link rel="stylesheet" href="{{ asset('css/foundation.min.css') }}" />
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Alegreya+Sans:100,400,700" /><link rel="stylesheet" href="{{ asset('css/foundation.min.css') }}" />
 	<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" />
 	<link rel="stylesheet" href="{{ asset('css/token-input-facebook.css') }}" />
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}" />
@@ -11,11 +10,18 @@
 </head>
 <body>
 <div id="site-title">
-	<h1>
-		<a href="{{ url('/') }}">
-			Sh<i class="fa fa-circle-o-notch"></i>pSync
-		</a>
-	</h1>
+	<div class="row">
+		<div class="small-6 columns">
+			<h1>
+				<a href="{{ url('/') }}">
+					Sh<i class="fa fa-circle-o-notch"></i>pSync
+				</a>
+			</h1>
+		</div>
+		<div class="small-6 columns">
+			notifications
+		</div>
+	</div>
 </div>
 <div id="nav">
 	<div class="row">@include('navigation')</div>
@@ -37,11 +43,15 @@
 </div>
 <div id="footer">
 	<hr />
-	&copy; 2015 <a href="//netshell.biz">NetShell</a> &bull;
-	<a href="//github.com/netshell-ltd/shopsync/issues" target="_blank">
-		<i class="fa fa-support fa-fw"></i>
-		{{ trans('Support') }}
-	</a>
+	<div class="row">
+      	<div class="small-12 columns">
+			&copy; 2015 <a href="//netshell.biz">NetShell</a> &bull;
+			<a href="//github.com/netshell-ltd/shopsync/issues" target="_blank">
+				<i class="fa fa-support fa-fw"></i>
+				{{ trans('Support') }}
+			</a>
+		</div>
+	</div>	
 </div>
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script src="{{ asset('js/jquery.tokeninput.js') }}"></script>

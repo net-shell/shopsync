@@ -15,8 +15,8 @@ $(document).ready(function() {
       tokenFormatter: function(c){ return "<li><p><img src='/images/icon-"+c.driver+".png' /> "+c.name+"</p></li>" }
     })
 
-    $(".save.button").click(function(){
-      submitForm({ prices: model("prices") })
+    $("#actions .save.button").click(function(){
+      SS.submitForm({ prices: model("prices") })
     })
 })
 @stop
@@ -40,7 +40,7 @@ $(document).ready(function() {
 
 @section('body')
 <div class="row">
-  <div class="large-8 columns">
+  <div class="large-{{ $hasSynced ? 8 : 12 }} columns">
     {!! Form::model($product, ['url' => action('ProductController@update', $product->id), 'method' => 'put']) !!}
     <h2>Details</h2>
     <div class="panel">
@@ -74,6 +74,7 @@ $(document).ready(function() {
     </div>
     {!! Form::close() !!}
   </div>
+  @if($hasSynced)
   <div class="large-4 columns">
     <h2>Synced With</h2>
     <div id="sync">
@@ -85,5 +86,6 @@ $(document).ready(function() {
       @endforeach
     </div>
   </div>
+  @endif
 </div>
 @stop

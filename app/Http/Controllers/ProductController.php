@@ -25,9 +25,9 @@ class ProductController extends Controller
 	public function show(Product $product)
 	{
 		$synced = ShopSync::rays($product->id);
+		$hasSynced = 0 < count($synced);
 		return view('product.edit')
-			->withProduct($product)
-			->withSynced($synced);
+			->with(compact('product', 'hasSynced', 'synced'));
 	}
 
 	public function create()

@@ -7,12 +7,15 @@ jQuery.fn.addHidden = function (name, value) {
 
 function dd(v) { console.log(v) }
 
-function submitForm(data) {
-      var form = $("form").first()
-      if("object"==typeof data) {
-	      $.each(data, function(k, v) {
-	      	form.addHidden(k, JSON.stringify(v))
-	    	})
-    	}
-      form.submit()
+var SS = {
+  submitForm: function(a, b) {
+        var form = $(!!b ? a : "form").first()
+        if(!b) b = a;
+        if("object" == typeof b) {
+  	      $.each(b, function(k, v) {
+  	      	form.addHidden(k, JSON.stringify(v))
+  	    	})
+        }
+        form.submit()
+  }
 }

@@ -25,11 +25,29 @@ class SyncController extends Controller
 			->withProduct($product);
 	}
 
-	public function show(Product $product, $driver)
+	public function update(Product $product, $driver, Request $request)
 	{
-		$ray = ShopSync::ray($product->id, $driver);
-		return view("drivers.$driver")
-			->withSync($ray);
+		$sync = ShopSync::ray($product->id, $driver);
+		$input = $request->only('name', 'description');
+		$sync->model->fill($input);
+		$sync->model->save();
+		return redirect(action('ProductController@show', $product->id));
 	}
 
+	public function show(Product $product, $driver)
+	{
+		$sync = ShopSync::rayEnsure($product->id, $driver);
+  		$actionData = [
+  			'products' => $sync->product->id,
+  			'driver' => $sync->driver
+  		];
+		return view("sync.drivers.$driver")->with(compact('sync', 'actionData'));
+	}
+
+	public function destroy(Product $product, $driver)
+	{
+		$sync = ShopSync::ray($product->id, $driver);
+		$sync->model->delete();
+		return redirect(action('ProductController@show', $product->id));
+	}
 }

@@ -12,7 +12,7 @@ class HomeController extends Controller {
 
 	public function index(Guard $auth, ShopSync $shopsync)
 	{
-		return view('home')->withUser($auth->user());
+		return view('home');
 	}
 
 }

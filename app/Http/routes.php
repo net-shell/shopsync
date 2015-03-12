@@ -2,6 +2,7 @@
 
 Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
+Route::get('me', 'Auth\AuthController@me');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

@@ -6,6 +6,11 @@ class Ray extends ModelContainer {
 
 	public $driver;
 
+	function __construct($model, $driver = null) {
+		parent::__construct($model);
+		$this->driver = $driver;
+	}
+
 	public function getHash()
 	{
 		

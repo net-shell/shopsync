@@ -7,12 +7,14 @@ use Netshell\ShopSync\Models\Category;
 class ShopSyncManager extends SyncManager
 {
     
-    public function categories($parent=1) {
+    public function categories($parent=1)
+    {
     	return Category::whereParentId($parent)->get();
     }
     
     // Shortcuts
-    public function products() {
+    public function products()
+    {
         return $this->centers();
     }
     
