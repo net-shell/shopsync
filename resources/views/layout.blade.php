@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" />
 	<link rel="stylesheet" href="{{ asset('css/token-input-facebook.css') }}" />
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+	@yield('stylesheets')
 	<style>@yield('css')</style>
 </head>
 <body>
@@ -28,10 +29,10 @@
 </div>
 <div id="header">
 	<div class="row">
-		<div class="small-4 columns">
+		<div class="medium-4 columns">
 			<h2>@yield('title')</h2>
 		</div>
-		<div class="small-8 columns" id="actions">
+		<div class="medium-8 columns" id="actions">
 			@yield('actions')
 		</div>
 	</div>
@@ -45,11 +46,28 @@
 	<hr />
 	<div class="row">
       	<div class="small-12 columns">
-			&copy; 2015 <a href="//netshell.biz">NetShell</a> &bull;
-			<a href="//github.com/netshell-ltd/shopsync/issues" target="_blank">
-				<i class="fa fa-support fa-fw"></i>
-				{{ trans('Support') }}
-			</a>
+      		<ul class="small-block-grid-3 medium-block-grid-6">
+      			<li>
+					<a href="//netshell.biz">NetShell</a> ShitSync
+				</li>
+				<li>
+					<a href="#">{{ trans('Developers') }}</a>
+				</li>
+				<li>
+					<a href="#">{{ trans('Partners') }}</a>
+				</li>
+				<li>
+					<a href="#">{{ trans('Affiliates') }}</a>
+				</li>
+				<li>
+					<a href="#">{{ trans('Terms of Use') }}</a>
+				</li>
+				<li>
+					<a href="//github.com/netshell-ltd/shopsync/issues" target="_blank">
+						{{ trans('Support') }}
+					</a>
+				</li>
+			</ul>
 		</div>
 	</div>	
 </div>
@@ -58,6 +76,7 @@
 <script src="{{ asset('js/modernizr.js') }}"></script>
 <script src="{{ asset('js/foundation.min.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
+@yield('scripts')
 <script>
 $(document).foundation()
 @yield('js')

@@ -2,6 +2,7 @@
 namespace Netshell\ShopSync;
 
 use Netshell\Sync\SyncManager;
+use Netshell\Sync\Star\Center;
 use Netshell\ShopSync\Models\Category;
 
 class ShopSyncManager extends SyncManager
@@ -16,6 +17,11 @@ class ShopSyncManager extends SyncManager
     public function products()
     {
         return $this->centers();
+    }
+
+    public function countProductLinks($model)
+    {
+        return count($this->rays($model->id));
     }
     
     // Drivers

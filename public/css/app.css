@@ -15,6 +15,9 @@ h1,h2,h3,h4,h5,h6, .heading, .sub-nav, .accent, #site-title {
 	font-family: 'Alegreya Sans', sans-serif;
 	font-weight: 300;
 }
+
+.heading.active { font-weight: normal; }
+
 table tr td input[type=checkbox] { margin: 0rem; }
 
 #site-title {
@@ -50,11 +53,11 @@ table tr td input[type=checkbox] { margin: 0rem; }
 
 #header {
 	background-color: #379937;
-	padding: .2rem 0;
+	padding: .4rem 0 0 0;
 }
 #header h2 {
 	color: #fff;
-	font-size: 2em;
+	font-size: 2.4em;
 	margin: 0;
 	padding-top: .2em;	
 }
@@ -70,27 +73,30 @@ table tr td input[type=checkbox] { margin: 0rem; }
 #actions .button {
 	margin: 0 0 0 .5em;
 	padding: 12px 1em;
-	border: 1px solid #fff;
+	border: 1px solid;
 	border-radius: 3px;
 	font-size: 1.2em;
 	color: #fff;
 	opacity: 0.7;
 	background-color: transparent;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 #actions .button:hover {
 	background-color: #40C840;
 	opacity: 1;
-	border-color: transparent;
 	color: #fff;
 }
 #actions .button.disabled {
 	background: none;
 	border-color: transparent;
-	color: inherit;
+	color: #fff;
+	opacity: .3;
 }
 #actions .button i {
 	margin: 0 .2em;
 }
+
+#body { margin-top: 1em; }
 
 .sub-nav a, .sub-nav dt {
 	font-size: 1.4em;
@@ -101,7 +107,9 @@ table tr td input[type=checkbox] { margin: 0rem; }
 .sub-nav dd.active a {
 	background-color: #379937;
 }
-
+.sub-nav dd.active a:hover {
+	background-color: #40c840;
+}
 #footer { text-align: center; }
 #footer .columns { padding: 1em; }
 

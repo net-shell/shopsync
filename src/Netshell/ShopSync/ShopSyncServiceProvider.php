@@ -6,6 +6,7 @@ class ShopSyncServiceProvider extends ServiceProvider {
 
 	public function boot()
 	{
+		$this->app['shopsync']->observe();
 	}
 
 	public function register()

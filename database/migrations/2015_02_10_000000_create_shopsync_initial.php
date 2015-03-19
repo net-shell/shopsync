@@ -20,11 +20,28 @@ class CreateShopsyncInitial extends Migration {
 			$table->timestamps();
 		});
 
+		Schema::create('shops', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('name');
+			$table->string('driver');
+			$table->string('default_config', 200)->default('{}');
+		});
+
+		Schema::create('shop_configs', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->integer('shop_id')->unsigned();
+			$table->bigInteger('user_id')->unsigned();
+			$table->string('config', 200)->default('{}');
+			$table->timestamps();
+		});
+
 		Schema::create('listings', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->integer('user_id');
+			$table->integer('user_id')->unsigned();
 		});
 
 		Schema::create('products', function(Blueprint $table)
@@ -43,7 +60,7 @@ class CreateShopsyncInitial extends Migration {
 			$table->bigIncrements('id');
 			$table->string('name');
 			$table->text('description')->nullable();
-			$table->bigInteger('product_id');
+			$table->bigInteger('product_id')->unsigned();
 			$table->timestamps();
 		});
 
@@ -52,7 +69,7 @@ class CreateShopsyncInitial extends Migration {
 			$table->bigIncrements('id');
 			$table->string('name');
 			$table->text('description')->nullable();
-			$table->bigInteger('product_id');
+			$table->bigInteger('product_id')->unsigned();
 			$table->timestamps();
 		});
 
@@ -61,7 +78,7 @@ class CreateShopsyncInitial extends Migration {
 			$table->bigIncrements('id');
 			$table->float('value');
 			$table->string('currency', 4);
-			$table->integer('product_id');
+			$table->bigInteger('product_id')->unsigned();
 		});
 
 		Schema::create('quantities', function(Blueprint $table)
@@ -70,7 +87,7 @@ class CreateShopsyncInitial extends Migration {
 			$table->float('value');
 			$table->string('unit')->nullable();
 			$table->string('storage')->nullable();
-			$table->integer('product_id');
+			$table->bigInteger('product_id')->unsigned();
 		});
 
 		Schema::create('categories', function(Blueprint $table)
@@ -79,20 +96,20 @@ class CreateShopsyncInitial extends Migration {
 			$table->bigInteger('category_id');
 			$table->string('name');
 			$table->string('driver')->nullable();
-			$table->integer('parent_id');
+			$table->bigInteger('parent_id')->unsigned();
 		});
 
 		Schema::create('category_product', function(Blueprint $table)
 		{
-			$table->integer('category_id');
-			$table->integer('product_id');
+			$table->bigInteger('category_id')->unsigned();
+			$table->bigInteger('product_id')->unsigned();
 		});
 
 		Schema::create('orders', function(Blueprint $table)
 		{
 			$table->bigIncrements('id');
 			$table->boolean('processed')->nullable();
-			$table->integer('product_id');
+			$table->bigInteger('product_id')->unsigned();
 			$table->timestamps();
 		});
 	}
@@ -100,6 +117,8 @@ class CreateShopsyncInitial extends Migration {
 	public function down()
 	{
 		Schema::drop('users');
+		Schema::drop('shops');
+		Schema::drop('shop_configs');
 		Schema::drop('listings');
 		Schema::drop('products');
 		Schema::drop('products_ebay');

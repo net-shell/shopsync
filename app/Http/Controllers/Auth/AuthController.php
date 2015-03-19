@@ -32,10 +32,6 @@ class AuthController extends Controller
 		return Redirect::intended('/');
 	}
 
-	function me() {
-		return view('me')->withUser($this->auth->user());
-	}
-
 	function getLogout()
 	{
 		$this->auth->logout();

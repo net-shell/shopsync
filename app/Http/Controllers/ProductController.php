@@ -19,7 +19,7 @@ class ProductController extends Controller
 	public function index()
 	{
 		return view('product.index')
-			->withListings(Listing::with('products')->get());
+			->withListings(Listing::with('products')->paginate(8));
 	}
 
 	public function show(Product $product)

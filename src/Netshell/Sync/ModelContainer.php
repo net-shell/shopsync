@@ -4,15 +4,18 @@ class ModelContainer {
 
 	public $model;
 
-	function __construct($model) {
+	function __construct($model)
+	{
 		$this->model = $model;
 	}
 
-	function __get($property) {
+	function __get($property)
+	{
 		return $this->model->$property;
 	}
 
-	function __set($property, $value) {
+	function __set($property, $value)
+	{
 		$this->model->$property = $value;
 	}
 

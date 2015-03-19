@@ -15,6 +15,10 @@
 	<i class="fa fa-plus"></i>
 	{{ trans('Product') }}
 </a>
+<a href="#" class="button">
+	<i class="fa fa-plus"></i>
+	{{ trans('Listing') }}
+</a>
 @stop
 
 @section('js')
@@ -74,7 +78,8 @@ $("#actions .select.delete").click(function(){
 		<div class="small-2 columns">Modified</div>
 		<div class="small-2 columns">Created</div>
 	</div>
-@foreach($listing->products as $product)
+	
+	@foreach($listing->products as $product)
 	<div class="row" data-href="{{ action('ProductController@show', $product->id) }}"
 		data-id="{{ $product->id }}">
 		<div class="small-5 columns">
@@ -82,7 +87,7 @@ $("#actions .select.delete").click(function(){
 			{{ $product->name }}
 		</div>
 		<div class="small-1 columns" style="text-align: center">
-			x
+			{{ ShopSync::countProductLinks($product) }}
 		</div>
 		<div class="small-2 columns">
 			{{ $product->defaultPrice }}
@@ -94,17 +99,8 @@ $("#actions .select.delete").click(function(){
 			{{ $product->created_at->diffForHumans() }}
 		</div>
  	</div>
-@endforeach
+	@endforeach
 </div>
 @endforeach
-<div class="pagination-centered">
-	<ul class="pagination">
-		<li class="arrow unavailable"><a href="">&laquo;</a></li>
-		<li class="current"><a href="">1</a></li>
-		<li><a href="">2</a></li>
-		<li><a href="">3</a></li>
-		<li><a href="">4</a></li>
-		<li class="arrow"><a href="">&raquo;</a></li>
-	</ul>
-</div>
+
 @stop
