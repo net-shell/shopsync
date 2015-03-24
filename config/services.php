@@ -3,9 +3,9 @@
 return [
 
 	'microweber' => [
-	    'client_id' => '1I0YfM77T6tRcBmxY300iS4cT1DFwaeq8jfrb2OM',
-	    'client_secret' => 'Jkze4vVIuR8dz6SRaNL5B5ZlaNwsN9wWtUyJSwTT',
-	    'redirect' => 'http://shopsync.dev/auth/callback',
+	    'client_id' => env('MW_CLIENT'),
+	    'client_secret' => env('MW_SECRET'),
+	    'redirect' => url('/auth/callback'),
 	    'trusted' => 0
 	],
 

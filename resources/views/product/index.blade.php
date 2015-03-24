@@ -47,27 +47,43 @@ $("#actions .select.delete").click(function(){
 
 @section('body')
 
+{!! Form::open(['url' => action('FilterController@set'), 'method' => 'post']) !!}
 <dl class="sub-nav">
 	<dt>{{ trans('Filter') }}:</dt>
-	<dd class="active">
-		<a href="#">All</a>
+	<dd {!! !session('products') ? 'class="active"' : '' !!}>
+		<a onclick="SS.submitForm({'products': null})">All</a>
 	</dd>
-	<dd>
-		<a href="#"><i class="fa fa-link"></i> Synced</a>
+	<dd {!! session('products') == 'synced' ? 'class="active"' : '' !!}>
+		<a onclick="SS.submitForm({'products': 'synced'})">
+			<i class="fa fa-link"></i> Synced
+		</a>
 	</dd>
-	<dd>
-		<a href="#"><i class="fa fa-unlink"></i> Not Synced</a>
+	<dd {!! session('products') == 'not_synced' ? 'class="active"' : '' !!}>
+		<a onclick="SS.submitForm({'products': 'not_synced'})">
+			<i class="fa fa-unlink"></i> Not Synced
+		</a>
 	</dd>
-	<dd>
-		<a href="#"><i class="fa fa-trash"></i> Trashed</a>
+	<dd {!! session('products') == 'trashed' ? 'class="active"' : '' !!}>
+		<a onclick="SS.submitForm({'products': 'trashed'})">
+			<i class="fa fa-trash"></i> Trashed
+		</a>
 	</dd>
 </dl>
+{!! Form::close() !!}
 
 @foreach($listings as $listing)
 <h2>{{ $listing->name }} ({{ count($listing->products) }})</h2>
 <div class="datagrid">
 	<div class="disabled header row">
-		<div class="small-5 columns"></div>
+		<div class="small-5 columns">
+			<a class="datagrid-select-all">
+				<i class="fa fa-fw fa-check-square-o"></i>
+				{{ trans('Select All') }}
+			</a> /
+			<a class="datagrid-unselect-all">
+				{{ trans('None') }}
+			</a>
+		</div>
 		<div class="small-1 columns" style="text-align: center">
 			<i class="fa fa-link"></i>
 		</div>
@@ -79,7 +95,7 @@ $("#actions .select.delete").click(function(){
 		<div class="small-2 columns">Created</div>
 	</div>
 	
-	@foreach($listing->products as $product)
+	@foreach($listing->products()->filtered()->get() as $product)
 	<div class="row" data-href="{{ action('ProductController@show', $product->id) }}"
 		data-id="{{ $product->id }}">
 		<div class="small-5 columns">
@@ -87,6 +103,9 @@ $("#actions .select.delete").click(function(){
 			{{ $product->name }}
 		</div>
 		<div class="small-1 columns" style="text-align: center">
+			@if(!$product->sync_status)
+			<i class="fa fa-warning"></i>
+			@endif
 			{{ ShopSync::countProductLinks($product) }}
 		</div>
 		<div class="small-2 columns">

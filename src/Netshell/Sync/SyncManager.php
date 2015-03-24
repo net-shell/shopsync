@@ -6,17 +6,16 @@ use Exception;
 
 class SyncManager extends Manager {
 
-	// Observers
-
-	public function observe()
-	{
-    		foreach ($this->driverModels as $driver => $model) {
-    			$model::observe(new ModelObserver);
-		}
-	}
-
 	// Star
 
+	public function center($rayModel)
+	{
+		$class = $this->centerModel;
+		$key = $this->centerForeign;
+		$centerModel = $class::find($rayModel->$key);
+		return new Star\Center($centerModel);
+	}
+	
 	public function centers()
 	{
 		$class = $this->centerModel;

@@ -5,6 +5,7 @@ Route::get('home', 'HomeController@index');
 Route::get('me', 'MeController@account');
 Route::post('me', 'MeController@editAccount');
 Route::get('me/team', 'MeController@team');
+Route::post('filter', 'FilterController@set');
 
 Route::model('orders', 'Netshell\ShopSync\Models\Order');
 Route::model('products', 'Netshell\ShopSync\Models\Product');

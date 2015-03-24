@@ -24,6 +24,14 @@ class ShopSyncManager extends SyncManager
         return count($this->rays($model->id));
     }
     
+    // Model observers
+    public function observe()
+    {
+        foreach ($this->driverModels as $driver => $model) {
+            $model::observe(new ModelObserver);
+        }
+    }
+
     // Drivers
     protected $centerModel = 'Netshell\ShopSync\Models\Product';
     protected $centerForeign = 'product_id';

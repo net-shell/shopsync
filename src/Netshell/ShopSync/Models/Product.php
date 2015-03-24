@@ -24,6 +24,17 @@ class Product extends Model {
 		return $this->hasMany('Netshell\ShopSync\Models\Price');
 	}
 
+	public function scopeFiltered($query)
+	{
+		switch (session('products')) {
+			case 'synced':
+				return $query->where('sync_status', true);
+			case 'synced':
+				return $query->where('sync_status', false);
+		}
+		return $query;
+	}
+
 	public function getPricesJsonAttribute()
 	{
 		$prices = array();

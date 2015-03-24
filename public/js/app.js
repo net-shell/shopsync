@@ -13,7 +13,10 @@ var SS = {
         if(!b) b = a;
         if("object" == typeof b) {
   	      $.each(b, function(k, v) {
-  	      	form.addHidden(k, JSON.stringify(v))
+                  if("object" == typeof v) {
+                    v = JSON.stringify(v)
+                  }
+  	      	form.addHidden(k, v)
   	    	})
         }
         form.submit()

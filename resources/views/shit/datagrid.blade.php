@@ -29,14 +29,30 @@ $(document).ready(function() {
 		}
 		else
 			rows.addClass("selected")
-		allRows.each(function() {
+		selectionChange(allRows)
+		lastClicked = row
+		setTimeout(function(){row.removeClass("clicked")}, 200)
+	})
+	
+	function selectionChange(rows) {
+		rows.each(function() {
 			var s = $(this).is(".selected")
 			$(this).find("i.check").toggleClass("fa-square-o", !s)
 				.toggleClass("fa-check-square-o", s)
 		});
-		lastClicked = row
-		row.parents(".datagrid").trigger("selected")
-		setTimeout(function(){row.removeClass("clicked")}, 200)
+		rows.parents(".datagrid").trigger("selected")
+	}
+
+	$(".datagrid-select-all").click(function(){
+		var rows = $(".datagrid .row").not("disabled")
+		rows.addClass("selected")
+		selectionChange(rows)
+	})
+	
+	$(".datagrid-unselect-all").click(function(){
+		var rows = $(".datagrid .row").not("disabled")
+		rows.removeClass("selected")
+		selectionChange(rows)
 	})
 })
 @stop

@@ -51,6 +51,7 @@ class CreateShopsyncInitial extends Migration {
 			$table->text('description')->nullable();
 			$table->integer('listing_id');
 			$table->integer('updated_by')->nullable();
+			$table->boolean('sync_status')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
