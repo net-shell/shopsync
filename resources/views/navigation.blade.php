@@ -5,7 +5,7 @@ $links = [
 //	'Categories|folder-open|categories',
 	'Orders|shopping-cart|orders'
 ]; ?>
-<div class="icon-bar four-up">
+<div class="icon-bar vertical">
 	@foreach($links as $item)
 	<?php $item = explode('|', $item); ?>
 	<a href="{{ url('/'.$item[2]) }}"

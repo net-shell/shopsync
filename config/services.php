@@ -5,8 +5,7 @@ return [
 	'microweber' => [
 	    'client_id' => env('MW_CLIENT'),
 	    'client_secret' => env('MW_SECRET'),
-	    'redirect' => url('/auth/callback'),
-	    'trusted' => 0
+	    'redirect' => !app()->runningInConsole() ? url('/auth/callback') : ''
 	],
 
 	'ebay' => [
