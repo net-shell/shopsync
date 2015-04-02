@@ -8,13 +8,13 @@
 		<dd {!! Request::is('me') ? 'class="active"' : '' !!}>
 			<a href="{{ url('me') }}">{{ trans('Account') }}</a>
 		</dd>
-		<dd {!! Request::is('me/shops') ? 'class="active"' : '' !!}>
+		<dd {!! Request::is('me/shops', 'me/shops/*') ? 'class="active"' : '' !!}>
 			<a href="{{ url('me/shops') }}">{{ trans('Shops') }}</a>
 		</dd>
-		<dd {!! Request::is('me/team') ? 'class="active"' : '' !!}>
+		<dd {!! Request::is('me/team', 'me/team/*') ? 'class="active"' : '' !!}>
 			<a href="{{ url('me/team') }}">{{ trans('Team') }}</a>
 		</dd>
-		<dd {!! Request::is('me/payments') ? 'class="active"' : '' !!}>
+		<dd {!! Request::is('me/payments', 'me/payments/*') ? 'class="active"' : '' !!}>
 			<a href="{{ url('me/payments') }}">{{ trans('Payments') }}</a>
 		</dd>
 	</dl>

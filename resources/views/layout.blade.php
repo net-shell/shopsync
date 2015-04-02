@@ -10,77 +10,73 @@
 	<style>@yield('css')</style>
 </head>
 <body>
-
-<div class="off-canvas-wrap" data-offcanvas>
-	<div class="inner-wrap">
-		<aside class="left-off-canvas-menu">
-			<div id="nav">
-				<div class="row">@include('navigation')</div>
-			</div>
-		</aside>
 		
-		<div id="header" data-magellan-expedition="fixed">
-			<div class="row">
-				<div class="small-12 columns">
-					<div id="site-title">
-						<h1>
-							<a href="{{ url('/') }}" class="left-off-canvas-toggle">
-								<i class="fa fa-menu"></i>
-								Sh<i class="fa fa-circle-o-notch"></i>pSync
-							</a>
-						</h1>
-					</div>
-					<h2>@yield('title')</h2>
+<div id="header">
+	<div id="title_wrap">
+		<div class="row">
+			<div class="medium-6 columns">
+				<div id="site-title">
+					<h1>
+						<a href="{{ url('/') }}" class="left-off-canvas-toggle">
+							<i class="fa fa-menu"></i>
+							ShopSync
+						</a>
+					</h1>
 				</div>
+				<h2 id="page-title">/ @yield('title')</h2>
 			</div>
-			<div id="actions_wrap">
-				<div class="row">
-					<div class="small-12 columns">
-						<div id="actions">
-							@yield('actions')
-						</div>
-					</div>
+			<div class="medium-6 columns">
+				<div id="nav">
+					<div class="row">@include('navigation')</div>
 				</div>
 			</div>
 		</div>
-
-		<div id="body">
-			<div class="row">
-				<div class="small-12 columns">@yield('body')</div>
-			</div>
-		</div>
-		
-		<div id="footer">
-			<hr />
-			<div class="row">
-		      	<div class="small-12 columns">
-		      		<ul class="small-block-grid-3 medium-block-grid-6">
-		      			<li>
-							<a href="//netshell.biz">NetShell</a> ShitSync
-						</li>
-						<li>
-							<a href="#">{{ trans('Developers') }}</a>
-						</li>
-						<li>
-							<a href="#">{{ trans('Partners') }}</a>
-						</li>
-						<li>
-							<a href="#">{{ trans('Affiliates') }}</a>
-						</li>
-						<li>
-							<a href="#">{{ trans('Terms of Use') }}</a>
-						</li>
-						<li>
-							<a href="//github.com/netshell-ltd/shopsync/issues" target="_blank">
-								{{ trans('Support') }}
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>	
-		</div>
-		<a class="exit-off-canvas"></a>
 	</div>
+	<div id="actions_wrap" data-magellan-expedition="fixed">
+		<div class="row">
+			<div class="small-12 columns">
+				<div id="actions">
+					@yield('actions')
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="body">
+	<div class="row">
+		<div class="small-12 columns">@yield('body')</div>
+	</div>
+</div>
+
+<div id="footer">
+	<hr />
+	<div class="row">
+      	<div class="small-12 columns">
+      		<ul class="small-block-grid-3 medium-block-grid-6">
+      			<li>
+					<a href="//netshell.biz">NetShell</a> ShitSync
+				</li>
+				<li>
+					<a href="#">{{ trans('Developers') }}</a>
+				</li>
+				<li>
+					<a href="#">{{ trans('Partners') }}</a>
+				</li>
+				<li>
+					<a href="#">{{ trans('Affiliates') }}</a>
+				</li>
+				<li>
+					<a href="#">{{ trans('Terms of Use') }}</a>
+				</li>
+				<li>
+					<a href="//github.com/netshell-ltd/shopsync/issues" target="_blank">
+						{{ trans('Support') }}
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>	
 </div>
 
 <script src="{{ asset('js/jquery.js') }}"></script>
